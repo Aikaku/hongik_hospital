@@ -1,11 +1,10 @@
 package com.hongik.hospital.hongik_hospital.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
@@ -22,5 +21,9 @@ public class Patient {
 
     private char gender;
 
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "doctor_id")
+    // 없으면 doctor_doctor_id가 patient table에 생성되나
+    // 해당 어노테이션을 쓰면 doctor_id가 됌
     private Doctor doctor;
 }

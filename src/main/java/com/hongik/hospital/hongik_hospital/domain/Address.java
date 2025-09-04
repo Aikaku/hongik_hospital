@@ -5,9 +5,17 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class Address {
 
-    private String country;
+    private String zipcode;
 
     private String city;
 
     private String street;
+
+    protected Address() { }
+
+    public Address(String zipcode, String city, String street) {
+        this.zipcode = zipcode;
+        this.city = city;
+        this.street = street;
+    }
 }
