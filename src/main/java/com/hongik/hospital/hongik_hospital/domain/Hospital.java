@@ -28,6 +28,9 @@ public class Hospital {
     @OneToMany (mappedBy = "hospital", cascade = CascadeType.ALL)
     private List<HospitalDepartment> hds = new ArrayList<>();
 
+    @OneToOne (mappedBy = "hospital", cascade = CascadeType.ALL)
+    private Doctor doctor;
+
     //=====연관 관계 메서드=====//
 
     public void addDepartment(Department department) {

@@ -27,4 +27,7 @@ public class Department {
 
     @OneToMany (mappedBy = "department", cascade = CascadeType.ALL)
     private List<HospitalDepartment> hds = new ArrayList<>();
+
+    @OneToMany (mappedBy = "department", cascade = CascadeType.ALL)
+    private List<Doctor> doctors = new ArrayList<>();
 }
