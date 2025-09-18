@@ -1,6 +1,7 @@
-package com.hongik.hospital.hongik_hospital.hospitalTest;
+package com.hongik.hospital.hongik_hospital.integrationTest;
 
 import com.hongik.hospital.hongik_hospital.domain.Address;
+import com.hongik.hospital.hongik_hospital.domain.Department;
 import com.hongik.hospital.hongik_hospital.domain.Hospital;
 import com.hongik.hospital.hongik_hospital.repository.DepartmentRepository;
 import com.hongik.hospital.hongik_hospital.repository.HospitalRepository;
@@ -13,7 +14,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
-public class HospitalTest {
+public class IntegrationAddTest {
 
     EntityManager em;
 
@@ -26,10 +27,10 @@ public class HospitalTest {
     @Autowired
     DepartmentRepository departmentRepository;
 
+    @Test
     @Transactional
     @Rollback(value = false)
-    @Test
-    public void createHospitalTest() throws Exception {
+    public void createOneToOneHospitalTest() {
         Hospital hospital1 = new Hospital();
         Hospital hospital2 = new Hospital();
         Hospital hospital3 = new Hospital();
@@ -49,5 +50,39 @@ public class HospitalTest {
         hospitalRepository.save(hospital1);
         hospitalRepository.save(hospital2);
         hospitalRepository.save(hospital3);
+
+        //-----여기까지 병원 추가-----//
+
+        Department department1 = new Department();
+        Department department2 = new Department();
+        Department department3 = new Department();
+
+        department1.setName("비뇨기과");
+        department2.setName("산부인과");
+        department3.setName("내과");
+
+        departmentRepository.save(department1);
+        departmentRepository.save(department2);
+        departmentRepository.save(department3);
+
+        //-----여기까지 부서 추가-----//
+
+        hospital1.addDepartment(department1);
+        hospital1.addDepartment(department2);
+        hospital1.addDepartment(department3);
+
+        hospital2.addDepartment(department1);
+        hospital2.addDepartment(department2);
+
+        //-----------------------------//
+        // 비1 1 서울1
+        // 산2 1 서울1
+        // 내3 1 서울1
+        // 비1 2 일산2
+        // 산2 2 일산2
+        //-----------------------------//
+
+
+        //-----여기까지 병원에 부서 추가-----//
     }
 }
