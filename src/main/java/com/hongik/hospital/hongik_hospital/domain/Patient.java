@@ -36,7 +36,7 @@ public class Patient {
     // 없으면 doctor_doctor_id가 patient table에 생성되나
     // 해당 어노테이션을 쓰면 doctor_id가 됌
     // 중복 가능
-    private HospitalDoctor hospitalDoctor;
+    private Doctor doctor;
 
     @OneToMany (mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();

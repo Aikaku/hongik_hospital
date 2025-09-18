@@ -21,34 +21,33 @@ public class Hospital {
     // 중복 불가, NULL 불가
     private String name;
 
-    @Column(nullable=false, unique=true)
     @Embedded
     // 중복 불가, NULL 불가
     private Address address;
 
-    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL)
-    // NULL 가능
-    private List<HospitalDepartment> hospitalDepartments = new ArrayList<>();
+    @OneToMany (mappedBy = "hospital", cascade = CascadeType.ALL)
+    private List<HospitalDepartment> hds = new ArrayList<>();
 
     //=====연관 관계 메서드=====//
 
-    public void addDepartment(HospitalDepartment hospitalDepartment) {
-        hospitalDepartments.add(hospitalDepartment);
-        hospitalDepartment.setHospital(this);
+    public void addDepartment(Department department) {
+        HospitalDepartment hd= new HospitalDepartment();
+        hd.setHospital(this);
+        hd.setDepartment(department);
+        this.hds.add(hd);
     }
 
-    // 병원이 처음 생겼을 때
+/*    // 병원이 처음 생겼을 때
     public static Hospital createHospital(String name, Address address,
-                                          List<HospitalDepartment> hospitalDepartments) {
+                                          List<Department> departments) {
         Hospital hospital = new Hospital();
 
         hospital.setName(name);
         hospital.setAddress(address);
 
-        for(HospitalDepartment hospitalDepartment : hospitalDepartments){
-            hospital.addDepartment(hospitalDepartment);
+        for(Department department : departments){
+            hospital.addDepartment(department);
         }
-
         return hospital;
-    }
+    }*/
 }

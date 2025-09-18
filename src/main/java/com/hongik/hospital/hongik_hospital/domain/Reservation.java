@@ -21,16 +21,16 @@ public class Reservation {
     private ReserveStatus status;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "hospital_doctor_id")
-    private HospitalDoctor hospitalDoctor;
-
-    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "hospital_id")
     private Hospital hospital;
 
+/*    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;*/
+
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "hospital_department_id")
-    private HospitalDepartment hospitalDepartment;
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "patient_id")

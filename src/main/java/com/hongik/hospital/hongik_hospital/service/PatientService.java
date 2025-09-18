@@ -18,4 +18,13 @@ public class PatientService {
         patientRepository.save(patient);
         return patient.getId();
     }
+
+    // 특정 병원의 이름, 주소, 진료과 조회
+
+    // 특정 병원의 의사 조회
+
+    // 병원 예약 (하나의 예약만 가능)
+    public void resercation(Patient patient){
+
+    }
 }

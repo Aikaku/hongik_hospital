@@ -1,11 +1,13 @@
 package com.hongik.hospital.hongik_hospital.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Setter
@@ -22,4 +24,7 @@ public class Department {
     // 중복 불가, NULL 불가
     @Column(nullable=false, unique=true)
     private String name;
+
+    @OneToMany (mappedBy = "department", cascade = CascadeType.ALL)
+    private List<HospitalDepartment> hds = new ArrayList<>();
 }

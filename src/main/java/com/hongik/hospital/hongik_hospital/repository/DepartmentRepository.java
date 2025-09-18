@@ -1,15 +1,17 @@
 package com.hongik.hospital.hongik_hospital.repository;
 
-import com.hongik.hospital.hongik_hospital.domain.HospitalDepartment;
+import com.hongik.hospital.hongik_hospital.domain.Department;
 import jakarta.persistence.EntityManager;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class DepartmentRepository {
 
-    private EntityManager em;
+    private final EntityManager em;
 
-    public void save(HospitalDepartment hospitalDepartment){
-        em.persist(hospitalDepartment);
+    public void save(Department department){
+        em.persist(department);
     }
 }
