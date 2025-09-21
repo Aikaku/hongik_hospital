@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
@@ -29,11 +32,17 @@ public class Doctor {
     // 의사 경력, 등록 시점부터 1년마다 +1
     private int personal_history;
 
-    @OneToOne (fetch = LAZY)
-    @JoinColumn(name = "hospital_id")
-    private Hospital hospital;
-
     @ManyToOne (fetch = LAZY)
-    @JoinColumn(name = "department_id")
-    private Department department;
+    @JoinColumn(name = "hospital_department_id", nullable = false)
+    private HospitalDepartment hospitalDepartment;
+
+    @OneToMany (mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<Reservation> reservationList = new ArrayList<>();
+
+    //=====연관관계 메서드=====//
+
+    public void assign(HospitalDepartment hd) {
+        this.hospitalDepartment = hd;
+        hd.getDoctorList().add(this);
+    }
 }

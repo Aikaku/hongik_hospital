@@ -27,24 +27,20 @@ public class Patient {
     private int age;
 
     @Column(nullable=false)
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     // 중복 가능, NULL 불가
     private Gender gender;
-
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "doctor_id")
-    // 없으면 doctor_doctor_id가 patient table에 생성되나
-    // 해당 어노테이션을 쓰면 doctor_id가 됌
-    // 중복 가능
-    private Doctor doctor;
 
     @OneToMany (mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
 
     //=====연관 관계 메서드=====//
 
-    public void addReservation(Reservation reservation){
-        reservations.add(reservation);
+    public void addReservation(Doctor doctor) {
+        Reservation reservation = new Reservation();
+        reservation.setDoctor(doctor);
         reservation.setPatient(this);
+        this.reservations.add(reservation);
+        doctor.getReservationList().add(reservation);
     }
 }

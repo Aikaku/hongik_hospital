@@ -17,7 +17,7 @@ public class Department {
 
     @Id
     @GeneratedValue
-    @Column(name = "depatrtment_id", nullable=false)
+    @Column(name = "department_id", nullable=false)
     // 중복 불가, NULL 불가
     private Long id;
 
@@ -26,8 +26,5 @@ public class Department {
     private String name;
 
     @OneToMany (mappedBy = "department", cascade = CascadeType.ALL)
-    private List<HospitalDepartment> hds = new ArrayList<>();
-
-    @OneToMany (mappedBy = "department", cascade = CascadeType.ALL)
-    private List<Doctor> doctors = new ArrayList<>();
+    private List<HospitalDepartment> hdList = new ArrayList<>();
 }

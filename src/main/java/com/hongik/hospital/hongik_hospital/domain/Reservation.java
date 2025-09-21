@@ -17,26 +17,18 @@ public class Reservation {
     @Column(name = "reserve_id")
     private Long id;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
+    @Column(nullable=false)
     private ReserveStatus status;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "hospital_id")
-    private Hospital hospital;
-
-/*    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "department_id")
-    private Department department;*/
-
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
-
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "patient_id")
+    @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    private LocalDateTime reserveTime;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "doctor_id", nullable = false)
+    private Doctor doctor;
 
-    //=====비지니스 로직 메서드=====//
+    @Column(nullable = false)
+    private LocalDateTime reserveTime;
 }

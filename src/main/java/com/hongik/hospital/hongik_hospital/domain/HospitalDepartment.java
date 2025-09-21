@@ -20,10 +20,13 @@ public class HospitalDepartment {
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "department_id")
+    @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
     @ManyToOne (fetch = LAZY)
-    @JoinColumn(name = "hospital_id")
+    @JoinColumn(name = "hospital_id", nullable = false)
     private Hospital hospital;
+
+    @OneToMany (mappedBy = "hospitalDepartment", cascade = CascadeType.ALL)
+    private List<Doctor> doctorList = new ArrayList<>();
 }

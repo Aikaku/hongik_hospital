@@ -26,10 +26,7 @@ public class Hospital {
     private Address address;
 
     @OneToMany (mappedBy = "hospital", cascade = CascadeType.ALL)
-    private List<HospitalDepartment> hds = new ArrayList<>();
-
-    @OneToOne (mappedBy = "hospital", cascade = CascadeType.ALL)
-    private Doctor doctor;
+    private List<HospitalDepartment> hdList = new ArrayList<>();
 
     //=====연관 관계 메서드=====//
 
@@ -37,20 +34,7 @@ public class Hospital {
         HospitalDepartment hd= new HospitalDepartment();
         hd.setHospital(this);
         hd.setDepartment(department);
-        this.hds.add(hd);
+        this.hdList.add(hd);
+        department.getHdList().add(hd);
     }
-
-/*    // 병원이 처음 생겼을 때
-    public static Hospital createHospital(String name, Address address,
-                                          List<Department> departments) {
-        Hospital hospital = new Hospital();
-
-        hospital.setName(name);
-        hospital.setAddress(address);
-
-        for(Department department : departments){
-            hospital.addDepartment(department);
-        }
-        return hospital;
-    }*/
 }
