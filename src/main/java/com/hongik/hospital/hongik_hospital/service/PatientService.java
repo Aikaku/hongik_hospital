@@ -19,12 +19,11 @@ public class PatientService {
         return patient.getId();
     }
 
-    // 특정 병원의 이름, 주소, 진료과 조회
+    // 환자는 자신이 원하는 병원의 모든 정보를 제공 받을 수 있다.
 
-    // 특정 병원의 의사 조회
 
     // 병원 예약 (하나의 예약만 가능)
-    public void resercation(Patient patient){
+    public void reservation(Patient patient){
 
     }
 }
