@@ -2,10 +2,10 @@ package com.hongik.hospital.hongik_hospital.hospitalTest;
 
 import com.hongik.hospital.hongik_hospital.domain.Address;
 import com.hongik.hospital.hongik_hospital.domain.Hospital;
-import com.hongik.hospital.hongik_hospital.repository.DepartmentRepository;
 import com.hongik.hospital.hongik_hospital.repository.HospitalRepository;
 import com.hongik.hospital.hongik_hospital.service.HospitalService;
 import jakarta.persistence.EntityManager;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,9 +22,6 @@ public class HospitalTest {
 
     @Autowired
     HospitalRepository hospitalRepository;
-
-    @Autowired
-    DepartmentRepository departmentRepository;
 
     @Transactional
     @Rollback(value = false)

@@ -1,7 +1,6 @@
 package com.hongik.hospital.hongik_hospital.departmentTest;
 
 import com.hongik.hospital.hongik_hospital.domain.Department;
-import com.hongik.hospital.hongik_hospital.repository.DepartmentRepository;
 import com.hongik.hospital.hongik_hospital.repository.HospitalRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
@@ -18,9 +17,6 @@ public class DepartmentTest {
     @Autowired
     HospitalRepository hospitalRepository;
 
-    @Autowired
-    DepartmentRepository departmentRepository;
-
     @Transactional
     @Rollback(value = false)
     @Test
@@ -32,9 +28,5 @@ public class DepartmentTest {
         department1.setName("비뇨기과");
         department2.setName("산부인과");
         department3.setName("내과");
-
-        departmentRepository.save(department1);
-        departmentRepository.save(department2);
-        departmentRepository.save(department3);
     }
 }
