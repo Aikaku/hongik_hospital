@@ -11,7 +11,5 @@ public class PatientRepository {
 
     private EntityManager em;
 
-    public void save(Patient patient){
-        em.persist(patient);
-    }
+    public void save(Patient patient){ em.persist(patient); }
 }

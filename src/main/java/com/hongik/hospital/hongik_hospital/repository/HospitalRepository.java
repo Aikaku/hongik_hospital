@@ -15,5 +15,5 @@ public class HospitalRepository {
         em.persist(hospital);
     }
 
-    // 특정 병원의 이름, 주소, 진료과 정보 제공
+    public Hospital findOne(Long id) { return em.find(Hospital.class, id);}
 }
