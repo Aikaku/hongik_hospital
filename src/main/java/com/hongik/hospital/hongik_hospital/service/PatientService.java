@@ -1,7 +1,6 @@
 package com.hongik.hospital.hongik_hospital.service;
 
 import com.hongik.hospital.hongik_hospital.domain.*;
-import com.hongik.hospital.hongik_hospital.domain.DTO.ReservationDTO;
 import com.hongik.hospital.hongik_hospital.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
