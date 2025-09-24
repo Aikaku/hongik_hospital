@@ -46,9 +46,9 @@
 
 * listDepartments() → 전체 진료과 목록 조회
 
-4. DoctorService
+### 4. DoctorService
 
-### * registerDoctor(DoctorDto dto) → 의사 등록
+* registerDoctor(DoctorDto dto) → 의사 등록
 
 * updateDoctor(Long doctorId, DoctorDto dto) → 의사 정보 수정
 
