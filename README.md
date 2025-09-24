@@ -18,7 +18,7 @@
 
 ===========================================================================================================
 
-1. PatientService
+### 1. PatientService
 
 * registerPatient(PatientDto dto) → 환자 등록
 
@@ -28,7 +28,7 @@
 
 * listPatients() → 전체 환자 목록 조회
 
-2. HospitalService
+### 2. HospitalService
 
 * registerHospital(HospitalDto dto) → 병원 등록
 
@@ -38,7 +38,7 @@
 
 * listHospitals() → 전체 병원 목록 조회
 
-3. DepartmentService
+### 3. DepartmentService
 
 * registerDepartment(DepartmentDto dto) → 진료과 등록
 
@@ -48,7 +48,7 @@
 
 4. DoctorService
 
-* registerDoctor(DoctorDto dto) → 의사 등록
+### * registerDoctor(DoctorDto dto) → 의사 등록
 
 * updateDoctor(Long doctorId, DoctorDto dto) → 의사 정보 수정
 
@@ -58,18 +58,18 @@
 
 * listDoctorsByDepartment(Long deptId) → 특정 진료과 의사 목록
 
-5. ReservationService
+### 5. ReservationService
 
-* reserve(Long patientId, Long doctorId, LocalDateTime time)
-  → 환자가 특정 의사에게 진료 예약 생성
+* reserve(Long patientId, Long doctorId, LocalDateTime time)  
+  → 환자가 특정 의사에게 진료 예약 생성  
   → 제약 조건: 환자는 같은 의사에 대해 1개의 예약만 가능
 
-cancelReservation(Long reservationId) → 예약 취소
+* cancelReservation(Long reservationId) → 예약 취소
 
-completeReservation(Long reservationId) → 진료 완료 처리(상태 변경)
+* completeReservation(Long reservationId) → 진료 완료 처리(상태 변경)
 
-getReservation(Long reservationId) → 예약 단건 조회
+* getReservation(Long reservationId) → 예약 단건 조회
 
-listReservationsByPatient(Long patientId) → 환자의 예약 목록
+* listReservationsByPatient(Long patientId) → 환자의 예약 목록
 
-listReservationsByDoctor(Long doctorId) → 의사의 예약 목록
+* listReservationsByDoctor(Long doctorId) → 의사의 예약 목록
