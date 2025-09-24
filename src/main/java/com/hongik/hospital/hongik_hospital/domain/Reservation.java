@@ -52,4 +52,11 @@ public class Reservation {
         }
         this.setStatus(ReserveStatus.CANCEL);
     }
+
+    public void complete() {
+        if (this.getStatus() == ReserveStatus.COMP) {
+            throw new IllegalStateException("이미 진료가 완료된 예약입니다.");
+        }
+        this.setStatus(ReserveStatus.COMP);
+    }
 }
