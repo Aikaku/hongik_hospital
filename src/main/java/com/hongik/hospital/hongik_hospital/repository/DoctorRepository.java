@@ -15,14 +15,21 @@ public class DoctorRepository {
 
     private final EntityManager em;
 
+    // 의사 등록 및 수정
     public void save(Doctor doctor){
-        em.persist(doctor);
+        if (doctor.getId() == null) {
+            em.persist(doctor);
+        }
+        else {
+            em.merge(doctor);
+        }
     }
 
+    // 의사 조회
     public Doctor findOne(Long id) { return em.find(Doctor.class, id);}
 
-    // 부서의 의사 찾기
-    public List<Doctor> findDoctorOfDepartment(Long hospitalDepartmentId) {
+    // 부서의 의사 전체 조회
+    public List<Doctor> findAllOfDepartment(Long hospitalDepartmentId) {
         return em.createQuery("select d from Doctor d where d.hospitalDepartment.id = :HospitalDepartmentId"
                         , Doctor.class)
                 .setParameter("HospitalDepartmentId", hospitalDepartmentId).getResultList();

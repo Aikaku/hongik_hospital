@@ -22,7 +22,7 @@ public class DepartmentRepository {
 
     public Department findOne(Long id) { return em.find(Department.class, id);}
 
-    public List<HospitalDepartment> findHospitalDepartmentOfHospital(Long hospitalId) {
+    public List<HospitalDepartment> findAllOfHospital(Long hospitalId) {
         return em.createQuery("select h from HospitalDepartment h where h.hospital.id = :hospitalId"
                 , HospitalDepartment.class).setParameter("hospitalId",hospitalId).getResultList();
     }

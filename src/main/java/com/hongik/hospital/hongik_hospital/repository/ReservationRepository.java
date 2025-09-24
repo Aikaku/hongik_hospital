@@ -24,5 +24,4 @@ public class ReservationRepository {
     public Reservation findOne(Long reservationId) {
         return em.find(Reservation.class, reservationId);
     }
-
 }
